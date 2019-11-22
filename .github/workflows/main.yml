@@ -1,0 +1,14 @@
+name: Publish Docker
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: eharkins/gh-actions-deploy/package-example
+        username: ${{ secrets.GITHUB_PACKAGES_USERNAME }}
+        password: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
+        registry: docker.pkg.github.com
